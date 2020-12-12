@@ -19,8 +19,6 @@ jobs:
         run: |
           echo client_payload.env = ${{ github.event.client_payload.env }}
           echo client_payload.mykey = ${{ github.event.client_payload.mykey }}
-          echo my_payload.key1 = ${{ github.event.my_payload.key1 }}
-          echo my_payload.key2 = ${{ github.event.my_payload.key2 }}
       - name: List Files
         run: |
           pwd
