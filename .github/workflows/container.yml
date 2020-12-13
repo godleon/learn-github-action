@@ -12,4 +12,6 @@ jobs:
           node -v
           cat /etc/os-release
       - name: display OS
-        run: uname -r
+        run: |
+          uname -r
+          cat /etc/os-release
