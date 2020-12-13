@@ -1,0 +1,13 @@
+name: Container-4
+on: push
+
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: run a script
+        uses: docker://alpine
+        with:
+          entrypoint: ./script.sh
+          args: 'hello-world'

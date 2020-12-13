@@ -1,5 +1,5 @@
 name: Container-3
-on: push
+on: pull_request
 
 jobs:
   container-job:
@@ -11,6 +11,8 @@ jobs:
     services:
       redis:
         image: redis
+        # 在 step 中的 container 會與 service container 使用相同的 docker network
+        # 因此就不需要開啟 port mapping 了
         # ports:
         #   - 6379:6379
 
