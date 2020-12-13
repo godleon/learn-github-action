@@ -6,7 +6,7 @@ jobs:
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
     # Docker Hub image that `container-job` executes in
-    container: node:10.18-jessie
+    # container: node:10.18-jessie
 
     services:
       redis:
@@ -17,4 +17,5 @@ jobs:
     steps:
       - name: test redis connection
         run: |
+          cat /etc/os-release
           telnet localhost:6379
