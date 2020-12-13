@@ -19,4 +19,5 @@ jobs:
         run: |
           cat /etc/os-release
           telnet localhost 6379
+          quit
           telnet redis 6379
