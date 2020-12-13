@@ -19,4 +19,4 @@ jobs:
         uses: docker://redis
         with:
           entrypoint: ['/usr/local/bin/redis-cli']
-          args: ['-h', 'redis', 'ping']
+          args: '-h redis ping'
