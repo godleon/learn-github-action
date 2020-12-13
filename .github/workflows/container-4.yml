@@ -10,7 +10,7 @@ jobs:
       - name: display file list
         run: ls -a
       - name: run a script
-        uses: docker://node
+        uses: docker://alpine
         with:
           entrypoint: ./script.sh
           args: 'hello-world'
