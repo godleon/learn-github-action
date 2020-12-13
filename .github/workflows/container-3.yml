@@ -1,5 +1,5 @@
-name: Container-2
-on: pull_request
+name: Container-3
+on: push
 
 jobs:
   container-job:
@@ -16,8 +16,7 @@ jobs:
 
     steps:
       - name: test redis connection
-        run: |
-          cat /etc/os-release
-          telnet localhost 6379
-          quit
-          telnet redis 6379
+        uses: docker://redis
+        with:
+          entrypoint: ['/usr/local/bin/redis-cli']
+          args: ['-h', 'redis', 'ping']
