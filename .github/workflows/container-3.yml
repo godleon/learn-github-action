@@ -18,5 +18,5 @@ jobs:
       - name: test redis connection
         uses: docker://redis
         with:
-          entrypoint: ['/usr/local/bin/redis-cli']
+          entrypoint: '/usr/local/bin/redis-cli'
           args: '-h redis ping'
