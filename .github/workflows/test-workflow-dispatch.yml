@@ -1,6 +1,15 @@
 name: test-workflow-dispatch
 
 on: workflow_dispatch
+  inputs:
+    name:
+      description: 'Person to greet'
+      required: true
+      default: 'Mona the Octocat'
+    home:
+      description: 'location'
+      required: false
+      default: 'The Octoverse'
 
 jobs:
   run-github-actions:
@@ -8,7 +17,8 @@ jobs:
     steps:
       - name: Hello World
         run: |
-          echo client_payload.env = ${{ github.event.client_payload.env }}
+          echo github.event.inputs.name = ${{ github.event.inputs.name }}
+          echo github.event.inputs.home = ${{ github.event.inputs.home }}
       - uses: actions/checkout@v2
         with:
           repository: "godleon/dockerfiles"
