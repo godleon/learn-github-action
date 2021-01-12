@@ -13,3 +13,11 @@
 -   `Accept`：`application/vnd.github.everest-preview+json`
 
 -   `Content-Type`：`application/json`
+
+
+# trigger workflow
+
+```bash
+$ curl -X POST https://api.github.com/repos/godleon/learn-github-action/actions/workflows/{workflow_id}/dispatches
+```
+> 

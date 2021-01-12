@@ -1,4 +1,4 @@
-name: Actions Workflow
+name: test workflow dispatch
 
 on: workflow_dispatch
 
