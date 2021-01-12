@@ -11,7 +11,7 @@ jobs:
           echo client_payload.env = ${{ github.event.client_payload.env }}
       - uses: actions/checkout@v2
         with:
-          repository: "https://github.com/godleon/dockerfiles.git"
+          repository: "godleon/dockerfiles"
 
       - name: List Files After Checkout
         run: |
