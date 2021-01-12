@@ -1,0 +1,19 @@
+name: Actions Workflow
+
+on: workflow_dispatch
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: |
+          echo client_payload.env = ${{ github.event.client_payload.env }}
+      - uses: actions/checkout@v2
+        with:
+          repository: "https://github.com/godleon/dockerfiles.git"
+
+      - name: List Files After Checkout
+        run: |
+          pwd
+          ls -al
