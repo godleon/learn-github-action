@@ -1,0 +1,33 @@
+on:
+  push:
+    branches:
+      - qa
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+
+jobs:
+  build-source-container-image:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: display input values
+        run: |
+          echo "GITHUB_REF = $GITHUB_REF"
+          echo "GITHUB_SHA = $GITHUB_SHA"
+
+      - name: Get short commit hash
+        id: get_short_commit_hash
+        run: |
+          echo $GITHUB_SHA | awk '{print substr($0,0,7)}'
+          echo "::set-output name=commit_hash_short::$(echo $GITHUB_SHA | awk '{print substr($0,0,7)}')"
+
+      # - name: Push changes to GitHub repo
+      #   if: steps.update_service_image_tag.outputs.nothing_to_commit == '0'
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: main
