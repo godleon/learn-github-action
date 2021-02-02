@@ -31,6 +31,6 @@ jobs:
           echo "environment = staging"
 
       - name: Check environment for production
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'main' || github.ref == 'refs/heads/main'
         run: |
           echo "environment = production"
