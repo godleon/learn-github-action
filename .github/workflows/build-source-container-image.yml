@@ -1,0 +1,20 @@
+# on:
+#   push:
+#     branches:
+#       - qa
+#   pull_request:
+#     branches:
+#       - main
+#     types:
+#       - closed
+
+
+# jobs:
+#   build-source-container-image:
+#     runs-on: ubuntu-20.04
+
+#     steps:
+#       - name: display input values
+#         run: |
+#           echo "GITHUB_REF = $GITHUB_REF"
+#           echo "GITHUB_SHA = $GITHUB_SHA"
