@@ -26,11 +26,11 @@ jobs:
           echo "::set-output name=commit_hash_short::$(echo $GITHUB_SHA | awk '{print substr($0,0,7)}')"
 
       - name: Check environment for staging
-        if: $GITHUB_REF == 'refs/heads/qa'
+        if: github.ref == 'refs/heads/qa'
         run: |
           echo "environment = staging"
 
       - name: Check environment for production
-        if: $GITHUB_REF == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "environment = production"
