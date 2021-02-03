@@ -24,7 +24,7 @@ jobs:
         run: |
           echo $GITHUB_SHA | awk '{print substr($0,0,7)}'
           echo "::set-output name=commit_hash_short::$(echo $GITHUB_SHA | awk '{print substr($0,0,7)}')"
-          echo "::set-output name=commit_timestamp::$(date +'%Y%m%d%H%M')"
+          echo "::set-output name=commit_timestamp::$(date -d '+8 hours' '+%Y%m%d%H%M')"
 
       - name: Check environment for staging
         if: github.ref == 'refs/heads/qa'
