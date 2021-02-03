@@ -24,16 +24,21 @@ jobs:
         run: |
           echo $GITHUB_SHA | awk '{print substr($0,0,7)}'
           echo "::set-output name=commit_hash_short::$(echo $GITHUB_SHA | awk '{print substr($0,0,7)}')"
+          echo "::set-output name=commit_timestamp::$(date -d '+8 hours' '+%Y%m%d%H%M')"
 
       - name: Check environment for staging
         if: github.ref == 'refs/heads/qa'
         run: |
           echo "environment = staging"
+          echo "commit_hash_short = ${{ steps.get_short_commit_hash.outputs.commit_hash_short }}"
+          echo "commit_timestamp = ${{ steps.get_short_commit_hash.outputs.commit_timestamp }}"
 
       - name: Check environment for production
         if: github.ref == 'main' || github.ref == 'refs/heads/main'
         run: |
           echo "environment = production"
+          echo "commit_hash_short = ${{ steps.get_short_commit_hash.outputs.commit_hash_short }}"
+          echo "commit_timestamp = ${{ steps.get_short_commit_hash.outputs.commit_timestamp }}"
 
       - name: For updating service source code
         run:
