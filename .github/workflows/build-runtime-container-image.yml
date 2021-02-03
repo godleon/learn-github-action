@@ -2,11 +2,15 @@ on:
   push:
     branches:
       - qa
+    paths:
+      - 'Gemfile*'
   pull_request:
     branches:
       - main
     types:
       - closed
+    paths:
+      - 'Gemfile*'
 
 
 jobs:
@@ -34,3 +38,7 @@ jobs:
         if: github.ref == 'main' || github.ref == 'refs/heads/main'
         run: |
           echo "environment = production"
+
+      - name: For updating service runtime
+        run:
+          echo "update service runtime"
