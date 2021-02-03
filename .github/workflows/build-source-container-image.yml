@@ -1,20 +1,40 @@
-# on:
-#   push:
-#     branches:
-#       - qa
-#   pull_request:
-#     branches:
-#       - main
-#     types:
-#       - closed
+on:
+  push:
+    branches:
+      - qa
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
 
 
-# jobs:
-#   build-source-container-image:
-#     runs-on: ubuntu-20.04
+jobs:
+  build-source-container-image:
+    runs-on: ubuntu-20.04
 
-#     steps:
-#       - name: display input values
-#         run: |
-#           echo "GITHUB_REF = $GITHUB_REF"
-#           echo "GITHUB_SHA = $GITHUB_SHA"
+    steps:
+      - name: display input values
+        run: |
+          echo "GITHUB_REF = $GITHUB_REF"
+          echo "GITHUB_SHA = $GITHUB_SHA"
+
+      - name: Get short commit hash
+        id: get_short_commit_hash
+        run: |
+          echo $GITHUB_SHA | awk '{print substr($0,0,7)}'
+          echo "::set-output name=commit_hash_short::$(echo $GITHUB_SHA | awk '{print substr($0,0,7)}')"
+
+      - name: Check environment for staging
+        if: github.ref == 'refs/heads/qa'
+        run: |
+          echo "environment = staging"
+
+      - name: Check environment for production
+        if: github.ref == 'main' || github.ref == 'refs/heads/main'
+        run: |
+          echo "environment = production"
+
+      - name: For updating service source code
+        run:
+          echo "update service source code"
