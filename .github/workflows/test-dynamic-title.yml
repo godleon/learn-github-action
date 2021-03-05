@@ -1,4 +1,4 @@
-name: test-dynamic-title
+name: test-dynamic-title-${{ github.event.inputs.name }}
 on: 
   workflow_dispatch:
     inputs:
@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Hello World
+        run: |
+          echo github.event.inputs.name = ${{ github.event.inputs.name }}
+          echo github.event.inputs.home = ${{ github.event.inputs.home }}
+
+      - name: Run command for ${{ github.event.inputs.name }}
         run: |
           echo github.event.inputs.name = ${{ github.event.inputs.name }}
           echo github.event.inputs.home = ${{ github.event.inputs.home }}
