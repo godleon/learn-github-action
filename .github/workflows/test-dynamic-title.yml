@@ -1,0 +1,21 @@
+name: test-dynamic-title
+on: 
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: |
+          echo github.event.inputs.name = ${{ github.event.inputs.name }}
+          echo github.event.inputs.home = ${{ github.event.inputs.home }}
