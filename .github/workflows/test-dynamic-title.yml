@@ -12,7 +12,7 @@ on:
         default: 'The Octoverse'
 
 jobs:
-  run-github-actions-for-${{ github.event.inputs.name }}:
+  run-github-actions:
     runs-on: ubuntu-latest
     steps:
       - name: Hello World
